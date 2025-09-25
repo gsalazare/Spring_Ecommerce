@@ -3,6 +3,8 @@ package com.proyecto.ecommerce.controller;
 import com.proyecto.ecommerce.model.DetalleOrden;
 import com.proyecto.ecommerce.model.Orden;
 import com.proyecto.ecommerce.model.Producto;
+import com.proyecto.ecommerce.model.Usuario;
+import com.proyecto.ecommerce.service.IUsuarioService;
 import com.proyecto.ecommerce.service.ProductoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,13 +28,14 @@ public class HomeController {
     @Autowired
     private ProductoService productoService;
 
+    @Autowired
+    private IUsuarioService usuarioService;
+
     // Variable para almacenar los detalles de la orden
     List<DetalleOrden> detalles = new ArrayList<DetalleOrden>();
 
     // Datos de la orden
     Orden orden = new Orden();
-
-
 
 
     @GetMapping("")
@@ -121,7 +124,14 @@ public class HomeController {
     }
 
     @GetMapping("/order")
-    public String order(){
+    public String order(Model model){
+
+        Usuario usuario = usuarioService.findById(1).get();
+
+        model.addAttribute("cart", detalles);
+        model.addAttribute("orden", orden);
+        model.addAttribute("usuario", usuario);
+
 
         return "usuario/resumenorden";
     }
