@@ -1,6 +1,8 @@
 package com.proyecto.ecommerce.controller;
 
+import com.proyecto.ecommerce.model.Orden;
 import com.proyecto.ecommerce.model.Usuario;
+import com.proyecto.ecommerce.service.IOrdenService;
 import com.proyecto.ecommerce.service.IUsuarioService;
 import jakarta.servlet.http.HttpSession;
 import org.slf4j.Logger;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -23,6 +26,11 @@ public class UsuarioController {
     @Autowired
     private IUsuarioService usuarioService;
 
+
+    @Autowired
+    private IOrdenService ordenService;
+
+
     //usuario/registro
     @GetMapping("/registro")
     public String create(){
@@ -31,7 +39,7 @@ public class UsuarioController {
 
     @PostMapping("/save")
     public String save(Usuario usuario){
-        logger.info("Usuario {}", usuario);
+        logger.info("Usuario regidtro: {}", usuario);
         usuario.setTipo("USER");
         usuarioService.save(usuario);
         return "redirect:/";
@@ -44,10 +52,10 @@ public class UsuarioController {
 
     @PostMapping("/acceder")
     public String acceder(Usuario usuario, HttpSession session){
-        logger.info("Accesos {}", usuario);
+        logger.info("Accesos : {}", usuario);
 
         Optional<Usuario> user = usuarioService.findByEmail(usuario.getEmail());
-        logger.info("Usuario de base de datos {}", user.get());
+        //logger.info("Usuario de base de datos {}", user.get());
 
         if (user.isPresent()){
             session.setAttribute("idusuario", user.get().getId());
@@ -67,6 +75,10 @@ public class UsuarioController {
     @GetMapping("/compras")
     public String obtenerCompras(Model model, HttpSession session){
         model.addAttribute("sesion", session.getAttribute("idusuario"));
+        Usuario usuario = usuarioService.findById(Integer.parseInt(session.getAttribute("idusuario").toString())).get();
+        List<Orden> ordenes = ordenService.findByUsuario(usuario);
+
+        model.addAttribute("ordenes", ordenes);
         return "usuario/compras";
     }
 
