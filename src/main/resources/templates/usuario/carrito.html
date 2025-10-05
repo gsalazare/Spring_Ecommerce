@@ -2,18 +2,23 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
+
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
     <title>Spring eCommerce</title>
 
+
     <!-- Bootstrap core CSS -->
-    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}"
+          rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+
 </head>
 
 <body>
@@ -22,11 +27,10 @@
 <div th:include="usuario/template_usuario.html::header" th:if="${sesion==null}">
 </div>
 
-<div th:include="usuario/template_usuario.html::header" th:unless="${sesion==null}"></div>
+<div th:include="usuario/template_usuario.html::header-user" th:unless="${sesion==null}"> </div>
 
 <!-- Page Content -->
 <div class="container">
-
     <!-- Page Heading/Breadcrumbs -->
     <h1 class="mt-4 mb-3">
         Spring eCommerce <small>Carrito</small>
@@ -58,7 +62,7 @@
                             <td th:text="${dorden.precio}"></td>
                             <td th:text="${dorden.cantidad}"></td>
                             <td th:text="${dorden.total}"></td>
-                            <td><a th:href="@{/delete/cart/{id} (id=${dorden.producto.id})  }" class="btn btn-danger">Quitar</a></td>
+                            <td><a th:href="@{/delete/cart/{id}   (id=${dorden.producto.id}) }" class="btn btn-danger">Quitar</a></td>
                         </tr>
                         </tbody>
                     </table>
@@ -73,10 +77,10 @@
                     </ul>
                 </div>
 
+
             </div>
         </div>
     </div>
-
 </div>
 <!-- /.container -->
 
