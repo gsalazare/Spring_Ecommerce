@@ -1,62 +1,116 @@
-[README.md](https://github.com/user-attachments/files/22502394/README.md)
-# [Start Bootstrap - Heroic Features](https://startbootstrap.com/templates/heroic-features/)
 
-[Heroic Features](https://startbootstrap.com/templates/heroic-features/) is a multipurpose HTML template for [Bootstrap](https://getbootstrap.com/) created by [Start Bootstrap](https://startbootstrap.com/).
+[README.md](https://github.com/user-attachments/files/22737100/README.md)
+# 🛒 E-Commerce Project — TechLink
 
-## Preview
+![GitHub repo size](https://img.shields.io/github/repo-size/usuario/ecommerce)
+![GitHub contributors](https://img.shields.io/github/contributors/usuario/ecommerce)
+![GitHub last commit](https://img.shields.io/github/last-commit/usuario/ecommerce)
+![GitHub issues](https://img.shields.io/github/issues/usuario/ecommerce)
+![License](https://img.shields.io/github/license/usuario/ecommerce)
 
-[![Heroic Features Preview](https://startbootstrap.com/assets/img/screenshots/templates/heroic-features.png)](https://startbootstrap.github.io/startbootstrap-heroic-features/)
+## 🧩 Descripción del Proyecto
+**TechLink E-Commerce** es una aplicación web desarrollada en **Java Spring Boot** con **Thymeleaf**, que permite la compra y venta de productos tecnológicos.  
+El proyecto implementa un flujo completo de usuario: registro, autenticación, gestión de productos, carrito de compras y panel de administración.
 
-**[View Live Preview](https://startbootstrap.github.io/startbootstrap-heroic-features/)**
+---
 
-## Status
+## 🚀 Tecnologías Utilizadas
+| Categoría | Tecnologías |
+|------------|--------------|
+| Backend | Java 17, Spring Boot, Spring Security, JPA (Hibernate) |
+| Frontend | HTML5, CSS3, Bootstrap, Thymeleaf |
+| Base de Datos | MySQL 8.3 |
+| Herramientas | Maven, Git, IntelliJ IDEA |
+| Servidor | Tomcat embebido |
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/StartBootstrap/startbootstrap-heroic-features/master/LICENSE)
-[![npm version](https://img.shields.io/npm/v/startbootstrap-heroic-features.svg)](https://www.npmjs.com/package/startbootstrap-heroic-features)
-[![Build Status](https://travis-ci.org/StartBootstrap/startbootstrap-heroic-features.svg?branch=master)](https://travis-ci.org/StartBootstrap/startbootstrap-heroic-features)
-[![dependencies Status](https://david-dm.org/StartBootstrap/startbootstrap-heroic-features/status.svg)](https://david-dm.org/StartBootstrap/startbootstrap-heroic-features)
-[![devDependencies Status](https://david-dm.org/StartBootstrap/startbootstrap-heroic-features/dev-status.svg)](https://david-dm.org/StartBootstrap/startbootstrap-heroic-features?type=dev)
+---
 
-## Download and Installation
+## ⚙️ Características Principales
+✅ Autenticación y registro de usuarios (Spring Security + BCrypt)  
+✅ Roles de usuario (Administrador / Cliente)  
+✅ CRUD completo de productos  
+✅ Carrito de compras persistente  
+✅ Gestión de pedidos y facturación  
+✅ Diseño responsive con Bootstrap  
+✅ Integración con base de datos MySQL  
+✅ Arquitectura MVC  
 
-To begin using this template, choose one of the following options to get started:
+---
 
-* [Download the latest release on Start Bootstrap](https://startbootstrap.com/templates/heroic-features/)
-* Install via npm: `npm i startbootstrap-heroic-features`
-* Clone the repo: `git clone https://github.com/StartBootstrap/startbootstrap-heroic-features.git`
-* [Fork, Clone, or Download on GitHub](https://github.com/StartBootstrap/startbootstrap-heroic-features)
+## 🗂️ Estructura del Proyecto
+```
+📦 ecommerce
+ ┣ 📂 src
+ ┃ ┣ 📂 main
+ ┃ ┃ ┣ 📂 java/com/proyecto/ecommerce
+ ┃ ┃ ┃ ┣ 📂 controller
+ ┃ ┃ ┃ ┣ 📂 model
+ ┃ ┃ ┃ ┣ 📂 repository
+ ┃ ┃ ┃ ┣ 📂 service
+ ┃ ┃ ┃ ┗ 📂 security
+ ┃ ┃ ┣ 📂 resources
+ ┃ ┃ ┃ ┣ 📂 static (css, js, images)
+ ┃ ┃ ┃ ┣ 📂 templates (Thymeleaf HTML)
+ ┃ ┃ ┃ ┗ 📄 application.properties
+ ┃ ┣ 📂 test
+ ┃ ┗ 📄 pom.xml
+ ┣ 📄 README.md
+ ┗ 📄 .gitignore
+```
 
-## Usage
+---
 
-### Basic Usage
+## 🧠 Instalación y Configuración
+### 1️⃣ Clonar el repositorio
+```bash
+git clone https://github.com/usuario/ecommerce.git
+cd ecommerce
+```
 
-After downloading, simply edit the HTML and CSS files included with the template in your favorite text editor to make changes. These are the only files you need to worry about, you can ignore everything else! To preview the changes you make to the code, you can open the `index.html` file in your web browser.
+### 2️⃣ Configurar la base de datos MySQL
+```sql
+CREATE DATABASE ecommerce;
+```
 
-### Advanced Usage
+Actualizar el archivo `application.properties`:
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/ecommerce
+spring.datasource.username=root
+spring.datasource.password=tu_contraseña
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+```
 
-After installation, run `npm install` and then run `npm start` which will open up a preview of the template in your default browser, watch for changes to core template files, and live reload the browser when changes are saved. You can view the `gulpfile.js` to see which tasks are included with the dev environment.
+### 3️⃣ Compilar y ejecutar
+```bash
+mvn clean install
+mvn spring-boot:run
+```
 
-You must have npm and Gulp installed globally on your machine in order to use these features.
+Luego accede desde tu navegador a:
+```
+http://localhost:8080
+```
 
-## Bugs and Issues
+---
 
-Have a bug or an issue with this template? [Open a new issue](https://github.com/StartBootstrap/startbootstrap-heroic-features/issues) here on GitHub or leave a comment on the [template overview page at Start Bootstrap](https://startbootstrap.com/templates/heroic-features/).
+## 🤝 Contribuir
+1. Haz un **fork** del repositorio  
+2. Crea una nueva rama (`git checkout -b feature/nueva-funcionalidad`)  
+3. Realiza tus cambios y haz un commit (`git commit -m 'Agrega nueva funcionalidad'`)  
+4. Haz push (`git push origin feature/nueva-funcionalidad`)  
+5. Crea un **Pull Request**
 
-## About
+---
 
-Start Bootstrap is an open source library of free Bootstrap templates and themes. All of the free templates and themes on Start Bootstrap are released under the MIT license, which means you can use them for any purpose, even for commercial projects.
+## 🧾 Licencia
+Este proyecto está bajo la licencia **MIT**.  
+Puedes usarlo, modificarlo y distribuirlo libremente, siempre que se otorgue el crédito correspondiente.
 
-* <https://startbootstrap.com>
-* <https://twitter.com/SBootstrap>
+---
 
-Start Bootstrap was created by and is maintained by **[David Miller](http://davidmiller.io/)**.
-
-* <http://davidmiller.io>
-* <https://twitter.com/davidmillerskt>
-* <https://github.com/davidtmiller>
-
-Start Bootstrap is based on the [Bootstrap](https://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
-
-## Copyright and License
-
-Copyright 2013-2020 Start Bootstrap LLC. Code released under the [MIT](https://github.com/StartBootstrap/startbootstrap-heroic-features/blob/gh-pages/LICENSE) license.
+## 👨‍💻 Autor
+**Gianfranco Salazar Espino**  
+📧 gsalazare92@gmail.com  
+🌐 www.linkedin.com/in/gsalazare  
+💼 Proyecto creado como parte del portafolio de desarrollo backend.
