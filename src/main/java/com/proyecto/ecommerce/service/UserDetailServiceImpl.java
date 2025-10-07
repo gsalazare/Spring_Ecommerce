@@ -40,11 +40,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
             log.info("Esto es el id del usuario: {}", optionalUser.get().getId());
             session.setAttribute("idusuario", optionalUser.get().getId());
             Usuario usuario = optionalUser.get();
-            return User.builder()
-                    .username(usuario.getNombre())
-                    .password(bCrypt.encode(usuario.getPassword())) // Usa el bean de BCryptPasswordEncoder
-                    .roles(usuario.getTipo())
-                    .build();
+            return User.builder().username(usuario.getNombre()).password(usuario.getPassword()).roles(usuario.getTipo()).build();
         } else {
             throw new UsernameNotFoundException("No existe el usuario");
         }

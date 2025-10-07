@@ -11,7 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-public class SpingBootSecurity {
+public class SpringBootSecurity {
 
     @Autowired
     private UserDetailsService userDetailService;
@@ -22,11 +22,12 @@ public class SpingBootSecurity {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
-                .authorizeHttpRequests()
-                .requestMatchers("/css/**", "/images/**", "/js/**", "/vendor/**").permitAll()  // Permitir acceso a recursos estáticos
-                .requestMatchers("/**").permitAll()  // Permitir acceso a todas las rutas sin restricción
-                .and().formLogin().loginPage("/usuario/login")  // Página de login personalizada
-                .permitAll().defaultSuccessUrl("/usuario/acceder");  // Redirigir a la página después del login exitoso
+                .authorizeRequests()
+                .requestMatchers("/css/**", "/images/**", "/js/**", "/vendor/**").permitAll()  // Permitir acceso a archivos estáticos
+                .requestMatchers("/administrador/**").hasRole("ADMIN")  // Restringir acceso a rutas de administrador solo a usuarios con rol ADMIN
+                .requestMatchers("/productos/**").hasRole("ADMIN")  // Restringir acceso a rutas de productos solo a usuarios con rol ADMIN
+                .and().formLogin().loginPage("/usuario/login")  // Configurar página de login
+                .permitAll().defaultSuccessUrl("/usuario/acceder");  // Redirigir a una URL de éxito tras login
 
         return http.build();
     }
@@ -37,12 +38,12 @@ public class SpingBootSecurity {
         AuthenticationManagerBuilder authenticationManagerBuilder =
                 http.getSharedObject(AuthenticationManagerBuilder.class);
         authenticationManagerBuilder.userDetailsService(userDetailService)
-                .passwordEncoder(bCrypt);  // Codificador de contraseñas
+                .passwordEncoder(bCrypt);
         return authenticationManagerBuilder.build();
     }
 
     @Bean
     public BCryptPasswordEncoder getEncoder() {
-        return new BCryptPasswordEncoder();  // Codificador de contraseñas
+        return new BCryptPasswordEncoder();
     }
 }

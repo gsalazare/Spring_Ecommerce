@@ -6,7 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.5.6</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>com.proyecto.ecommerce</groupId>
     <artifactId>spring-ecommerce</artifactId>
@@ -14,7 +14,7 @@
     <name>spring-ecommerce</name>
     <description>Curso de Spring proyecto ecommerce</description>
     <properties>
-        <java.version>17</java.version> <!-- O 20 si usas esa versión -->
+        <java.version>17</java.version>
     </properties>
     <dependencies>
         <dependency>
@@ -58,7 +58,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
-            <version>3.5.6</version>  <!-- Asegúrate de usar la misma versión que tienes para Spring Boot -->
+            <version>3.5.6</version>
         </dependency>
 
     </dependencies>
