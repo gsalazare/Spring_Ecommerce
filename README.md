@@ -63,7 +63,7 @@ El proyecto implementa un flujo completo de usuario: registro, autenticación, g
 ## 🧠 Instalación y Configuración
 ### 1️⃣ Clonar el repositorio
 ```bash
-git clone https://github.com/usuario/ecommerce.git
+git clone https://github.com/gsalazare/ecommerce.git
 cd ecommerce
 ```
 
